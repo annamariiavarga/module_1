@@ -12,7 +12,6 @@ $db = new SQLite3('3.db');
 // $db->exec('INSERT INTO students VALUES ("3", "Стус Михайло Олександрович", "121")');
 
 $res = $db->query('SELECT * FROM students');
-
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +29,7 @@ $res = $db->query('SELECT * FROM students');
                 <td>ІД</td>
                 <td>ФІО</td>
                 <td>Спеціальність</td>
+                <td>Опція</td>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +38,7 @@ $res = $db->query('SELECT * FROM students');
                 <td><?=$student['fio']?></td>
                 <td><?=$student['spec']?></td>
                 <td><?=$student['id']?></td>
+                <td><a href="3_edit.php?id=<?=$student['id']?>">Редагувати</a></td>
             </tr>
             <?php endwhile?>
         </tbody>

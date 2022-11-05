@@ -1,9 +1,8 @@
 <?php 
-$students = [
-    ['id' => '1', 'fio' => 'Романченко Роман Романович', 'spec' => '151'],
-    ['id' => '2', 'fio' => 'Бондаренко Валентина Сергіївна', 'spec' => '121'],
-    ['id' => '3', 'fio' => 'Стус Ігор Сергійович', 'spec' => '131']
-]
+$db = file_get_contents('2.json');
+
+$students = json_decode($db, true);
+
 ?>
 
 <!DOCTYPE html>
@@ -21,14 +20,16 @@ $students = [
                 <td>ІД</td>
                 <td>ФІО</td>
                 <td>Спеціальність</td>
+                <td>Опція</td>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($students as $student):?>
             <tr>
+                <td><?=$student['id']?></td>
                 <td><?=$student['fio']?></td>
                 <td><?=$student['spec']?></td>
-                <td><?=$student['id']?></td>
+                <td><a href="2_edit.php?id=<?=$student['id']?>">Редагувати</a></td>
             </tr>
             <?php endforeach?>
         </tbody>
